@@ -1,0 +1,25 @@
+Install and Configure SSH Server
+================================
+
+SSH stands for Secure Shell which is the default protocol in Linux for remote management. SSH is one of those essential piece of software which comes default with CentOS Minimal Server.
+
+Check Currently Installed SSH version.
+
+# SSH -V
+
+Use Secure Protocol over the default SSH Protocol and change port number also for extra Security. Edit the SSH configuration file /etc/ssh/sshd_config
+
+Uncomment the line below line or delete 1 from the Protocol string, so the line seems like:
+
+# Protocol 2,1 (Original)
+Protocol 2 (Now)
+This change force SSH to use Protocol 2 which is considered to be more secure than Protocol 1 and also make sure to change the port number 22 to any in the configuration.
+
+Disable SSH ‘root login‘ and allow to connect to root only after login to normal user account for added additional Security. For this, open and edit configuration file /etc/ssh/sshd_config and change PermitRootLogin yes to PermitRootLogin no.
+
+# PermitRootLogin yes (Original) 
+PermitRootLogin no (Now)
+
+Finally, restart SSH service to reflect new changes..
+
+# systemctl restart sshd.service

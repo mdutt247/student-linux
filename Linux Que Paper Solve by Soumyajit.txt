@@ -1,0 +1,194 @@
+1)Create 2 files using cat commnad.Add contents to it and save it. Add the two files into another file using output opertor. Show the output.
+Ans-   cat > datafile1
+  479  cat > datafile2
+  483  cat > datafile3 
+  487  cat datafile1 datafile2 > datafile3
+  488  cat datafile3
+
+2)backup of /etc using tar command int etc.tar file
+Ans-  tar -cvf etc.tar /etc
+
+3)create 3 files usind single comaannd. change the permission as rw-r--r--. Create a directory and set sticky bit to it.
+Ans-   touch f1 f2 f3
+   39  ls -l
+   40  mkdir file
+   41  ls -l
+   42  chmod o+t file
+   43  ls -l
+
+4)Create a group as CEO. Create one directory change the group ownership of the directory to CEO group.
+Ans- 
+
+5)Create a user with your name, comment as your surname,uid as 12345, primary group as Accounts & Secondary group as Manager, Set password as blank password. Test user login.
+Ans - [In root user #]
+    useradd akshay
+    usermod -c Madrikar akshay
+    usermod -u 12345 akshay
+    groupadd Accounts Manager
+    usermod -g Accounts akshay
+    usermod -G Manager akshay
+    passwd -d akshay
+    exit
+     [In current user $]
+    su akshay
+    gropus $(whoami)
+    O/P -> akshay : Accounts Manager
+   
+
+6)Create a directory and change the group ownership to apche group and show the result.
+Ans -
+   mkdir dir
+   groupadd apache 
+   chgrp apache dir
+   ls -l
+
+7)Take the backup of /home directory in to a file home.tar.bz2 using tar command wiht appropriate options and show the size of both /home and home.tar.bz2 file in humam readable format.
+Ans -
+   tar -cvf home.tar.bz2 /home
+   du -sh /home home.tar.bz2
+
+8)Create a soft link nad hard link for a file /etc/passwd and show the result.
+Ans - 
+    ln -s /etc/passwd softlink
+    ln /etc/passwd hardlink
+    ls -li
+
+9)Create three groups and three users and add these three users as memeber og three groups respectively.
+Ans -
+   	useradd user1
+	useradd user2
+	useradd user3
+
+	groupadd group1
+	groupadd group2
+	groupadd group3
+
+	usermod -G group1 user1
+	usermod -G group2 user2
+	usermod -G group3 user3
+
+	cat /etc/group
+	id [username]
+
+10)Create a user with your name change user setting using usermod command as follows : 
+	i) comment as student
+	ii) uid as 7000 
+	iii) shell as /bin/sh
+Show the result.
+Ans - 
+	useradd [username]
+	i) usermod -c student happy
+	ii) usermod -u 7000 happy
+	ii) usermod -s /bin/sh happy
+
+11)Create a group as Sales.Create one directory.change the group ownership to Sales group and show the result.
+Ans - 
+	mkdir dir
+   	groupadd Sales 
+   	chgrp Sales dir
+   	ls -l
+
+12)View the ip address of your system.Save the output in a file oldIPAddress.Change the ip address as 20.21.23.100 with appropriate net mask.Show the Result.
+Ans - 
+	ifconfig
+	hostname -i > OldIpAddress  or  hostname -I > OldIpAddress
+	cat OldIpAddress
+	ifconfig lo inet 20.21.23.100 netmask 255.255.255.0    or    ifconfig [Eth Card] inet 20.21.23.100 netmask 255.255.255.0
+	ifconfig
+
+13)Ccreate a user as your name. create a file as file1000. Change the ownership of the file for your username and group ownership for group apche. Show the result.
+Ans -
+     useradd [Your name]
+     touch file1000
+     chown [username] file1000
+     groupadd apache
+     chgrp apache file1000
+     ls -l
+
+14)Scehdule a job to display 'hello' message at 16.30 pm on 30th June.
+Ans - 
+   crontab -e
+   30 16 30 06 * echo 'hello' > /dev/pts/0
+   crontab -l
+
+15)Create associated directory structure as /Storage1/Storage2/Storage3 with single command. Also display the execution of the command and show the output using tree command.
+Ans - 
+    mkdir -p Storage1/Storage2/Storage3
+    tree Storage1
+
+16)Create one directory, create files in it using cat command take the backup of this directory using tar command.
+Ans -
+      mkdir [directoryName]
+      cd [directoryName]
+      cat > [filename]
+      Hi! I'm here.
+      cd ..
+      tar -cvf [directoryName].tar [directoryName]
+
+17)Create files using touch command. Create a directory as DaTaStorAgE, move the files to this directory then rename the directory as datastorage.
+Ans -
+     touch file1 file2 
+     mkdir DaTaStorAgE
+     mv file1 file2 DaTaStorAgE/
+     mv DaTaStorAgE datastorage
+     ls
+
+18)Set the runlevel of your system to 3 then test it by rebooting it and again change it to X11 i.e runlevel 5.
+Ans - 
+    cat /etc/inittab 
+    [Then copy the last line. Change the targetname to create soft link of it]
+    ln -s /lib/systemd/system/<target name>.target /etc/systemd/system/default.target
+    => runlevel 0 = Halt
+       runlevel 3 = multi-user
+       runlevel 5 = X11
+       runlevel 6 = reboot
+
+   ln -s /lib/systemd/system/multi-user.target /etc/systemd/system/default.target 
+   [If default.target already exists then do the following :]
+   rm /etc/systemd/system/default.target
+
+19)Change the host name of your PC as server10.cracker.org test it with hostname command with different options of the command.
+Ans -
+       hostname server10.cracker.org
+       hostname -i
+       hostname -d
+
+20)Run the Mozilla in background show the job ID for the same and then terminate the process using kill command immediately.
+Ans -
+     [Open firefox browser]
+     ps ax
+     kill [process Id of firefox]
+     
+21)Create two files using cat command. Add the contents of this files into the third file and convert the contents of first file into uppercase using tar command and save the output in fourth file.
+Ans - 
+     cat > file1
+     Hi file1 here!
+     cat > file2
+     Hi file2 here!
+     cat file1 file2 > file3
+     tr '[:lower:]' '[:upper:]' < file1 > file4
+     cat file4
+
+22)Create user TMVG and allow him to access init command.
+Ans -
+
+
+23)Create user named TMV and change all permissions of TMV user.
+Ans -
+ 
+
+24)Perform nice and renice command with options.
+Ans -
+
+
+
+
+
+
+
+
+
+
+
+
+

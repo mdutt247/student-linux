@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<title>UNIX</title>
+		<meta name="description" content="HTML5 page">
+		<meta name="author" content="dhaval">
+
+		<link rel="stylesheet" href="sytle.css">
+
+		<!--[if lt IE 9]>
+		                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
+		                <![endif]-->
+
+		<style>
+		body {
+			margin: 40px auto;
+			max-width: 650px;
+			line-height: 1.6;
+			font-size: 18px;
+			color: #444;
+			padding: 0;
+		}
+
+		/*
+		         This is the minimal amount of CSS required for a website to look
+		         half decent.
+		         See: bettermotherfuckingwebsite.com
+		*/
+		</style>
+	</head>
+
+<body>
+
+	<h1>*NIX based OSes</h1><h3> -- An introduction by Dhaval Anjaria</h3>
+	<h2>UNIX and C</h2>
+	<p>
+	UNIX created as a simple, portable, mutli-user, multi-tasking operating system by Ken Thompson and Dennis Ritchie. Multi-user, multi-tasking meant that UNIX, from the beginning supported mutliple users using the computer at the same time, and multi-tasking meant that it could run several programs at once.
+	</p>
+	<p>
+	It was originally developed for large computers used at Universities and so on. Initially it was written in the assembly language of the specific computer it was installed on. Eventually it was rewritten in the C language. In fact, C was developed keeping UNIX in mind and UNIX was meant to be an operating system specifically made for programmers.
+	</p>
+	
+	<p>C was created to make UNIX portable, which meant that because C was a higher level language and could be compiled into assembly, UNIX and its programs could be written once and then ported to a completely different system by simply compiling the program again.
+	</p>
+	<h2>History: The UNIX derivatives</h2>
+	<p>
+	UNIX was at first proprietary, paid software. However, because of the portability of UNIX, several different versions and several different kinds of UNIX systems were developed. Recall that UNIX could be fairly easily modified and extended. 
+	</p>
+	<p>
+
+	Eventually, students at Berkeley further developed their own version of UNIX called the "Berkely Software Distribution". AT&amp;T developed their own version of UNIX called System V (pronounced System Five) UNIX which was more business oriented than BSD. During the 1980s, these two were the two major versions of the UNIX operating system that were available. Both were evetually further extended and derived into Hewlett-Packard's HP-AX, IBM's AIX and Oracle's Solaris, all still very popular operating systems today. While BSD evolved into the BSD variants, such as FreeBSD, NetBSD and Apple's macOS and iOS operating system. In fact the OS X and all of Apple's operating systems are actual versions of UNIX.
+	</p>
+	<p>
+	BSD had one major advantage of System V. It was eventually open sourced. This meant that code from BSD could be adopted and used by anyone wherever they wished. This philosophy and distributing source code is basically why TCP/IP in Windows works. The TCP/IP implementation in Windows in take directly from BSD and this is why networking in a Windows PC can work out of the box.
+	</p>
+	<h2>One standard to rule them all</h2>
+	<p>
+	With so many different Unices, efforts were made to standardize the design of a portable system. UNIX was selected as the basis for this standard. POSIX was a specification for an Application Programming Interface (API) that an Operating System would provide so that programs can interact with the system. Basically, it would standardize the system calls that an OS would have to have a common system call API across several different operating systems and so applications for one system could easily be ported to any other system that follows that standard.
+	</p>
+	<p>
+	A system call interface is essentially a C API that an OS provides so that programmers can work with things like networking, file IO, process management, etc. Example, calls like <pre>read</pre>, <pre>write</pre>, <pre>open</pre> are defined in POSIX. It also included a syntax for regular expressions in the standard
+	</p>
+	<p>
+	Over time, POSIX also included CLI utilities such as cd, ls, echo. POSIX also came to define a threading API for C, a shell language, environment variables, etc. While POSIX is not legally speaking UNIX, most BSD distributions, macOS, and other Unices to follow the POSIX standard fully, i.e they are fully POSIX compliant.
+	</p>
+	<p>
+	Linux however, being a clone of UNIX and actually made from scratch is not fully POSIX compliant and the set of system calls, threads and the way they work is somewhat different from the POSIX standard
+	</p>
+
+
+
+	<h2>GNU is not UNIX</h2>
+
+	<p>
+	In the '80s however, UNIX was became closed source. AT&amp;T started selling UNIX as a closed source, proprietary software. Before this, when you bought the software, you would also get the code for it but not anymore. Richard Stallman of MIT, who was frustrated by the idea of not getting the code for the software he was using when he purchased, started the GNU project with the goal of creating a "complete UNIX-compatible software system" composed entirely of free software. 
+	</p>
+	<p>
+	This meant that it would be based on UNIX's design and source code, but wouldn't actually use code from UNIX. However, because it had a similar design, applications in the GNU project would be fully compatible with UNIX systems. Essentially, GNU is a clone of UNIX, which means that it is built to be <i>like</i> UNIX but it isn't actually UNIX. All the software for GNU is based on UNIX utilities but is not actually UNIX.
+	</p>
+	<p>
+	In the 90's as part of the GNU project, several pieces of software were written that were required for a proper operating system, however GNU lacked a proper kernel. So the GNU project used another kernel that was already being developed by Linus Torvalds.
+	</p>
+
+	<h2>Rise of the Penguin</h2>
+	<p>
+	In 1991, a student at Helsinki University, Finland was working on a kernel for the MINIX system which was another UNIX-like operating system. Eventually this kernel because open source, under the GNU General Public License, and it was called "Linux".
+	</p>
+	<p>
+	So GNU was the operating system that provided higher level system utilities and Linux was the kernel that provided the lower level components such as device drivers and so on. Together they became what is commonly known simply as "Linux" or "GNU/Linux" and because of the free and open nature of the software, adoption rose and several hundreds (if not thousands) of derivatives exist today.
+	</p>
+	<p>
+	In the early 90's, several systems based on GNU/Linux started appearing everywhere. Two of the oldest distributions are Slackware and Debian. Note: You should all be using Debian. Period. 
+	</p>
+	<p>
+	Debian (or rather the Debian project) was created to make an operating system that was meant as "the operating system for everything". This meant that all parts of Debian could be changed, even the kernel.</p>
+	<p>
+	Then there was RedHat. RedHat was a linux distribution made by the founders of RedHat in the late 90's. RedHat Linux was distributed as free software in the form of floppy disks and CDs before internet distribution was popular. RedHat made money by selling the support for the software. If a user encountered a problem, they could actually go in and fix it at the OS level, if need be. This model continues to be their primary business model today and RedHat is the biggest distributor of Open Source software in the world.
+	</p>
+	From Debian was derived Ubuntu, which was a free and open source and followed the RedHat model of selling support for free software. Ubuntu was developed by Canonical by Mark Shuttleworth and continues to dominate the Linux eco system being to most popular Linux distribution on Desktops by far. And as was tradition, Ubuntu was extended and modified into several different distributions based on Ubuntu which have further gone on to become incredibly popular. 
+	<p>
+	Since RedHat's source code was also open source, a version of RedHat which was free of charge was from the source code, people developed Community Enterprise OS (CentOS). CentOS is built directly from RedHat source code and follows the development closely.
+	</p>
+	<p>
+	However,RedHat itself created a different version of RedHat to use as a testbed for new software and so on. This was Fedora and continues to be one of the most prominent Linux distributions out there providing cutting edge software to its users.
+	</p>
+
+	<h2>The Family Tree</h2>
+	Therefore, UNIX has it's own family tree of sorts, of OSes being derived or cloned from other OSes which are further derivates. This is an example of such a tree:
+	<img src="http://image.slidesharecdn.com/fosshistory-090416120842-phpapp02/95/foss-history-3-728.jpg?cb=1239883734" />
+
+	<h2>*NIX is everywhere</h2>
+	Phones use *NIX based operating systems. Servers use them. Supercomputers use them. Microcomputers use them. TVs use them. IoT devices use them. Everybody uses these operating systems and if you've ever used a computer, you have used what the products of Ken Thompson and Dennis Ritchie.
+
+
+	<script src="script.js"></script>
+</body>
+</html>
+

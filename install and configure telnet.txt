@@ -1,0 +1,44 @@
+CentOS / RHEL 7 : How to install and configure telnet
+ 
+It’s not recommended to use telnet as it is not secure. The passwords are transferred using a plain text and any packet sniffer can easily track you. Nevertheless, it’s sometimes required to install telnet anyways. To check if you have telnet package already installed on your system, use :
+
+# rpm -qa | grep telnet
+telnet-server-0.17-59.el7.x86_64
+telnet-0.17-59.el7.x86_64
+In order to turn Telnet on make sure that you have the packages telnet-server and telnet installed:
+
+Installing telnet packages
+If the 2 required packages are not installed, install it using yum.
+
+# yum install telnet-server telnet
+Configuring/enabling telnet
+1. Add the service to firewalld.
+The built in firewalld blocks Telnet port 23 by default because the protocol is not considered secure. Please make sure that the port is open or if a non-default port is being used, that the port associated with Telnet is open for Telnet traffic to pass through.
+
+# firewall-cmd --add-service=telnet --zone=public
+2. Add the service to selinux.
+You will have to also add the service to SELinux. This is required only in the case where SELinux is enabled on the system.
+
+# semanage port -a -t telnetd_port_t -p tcp 
+3. Enable and start the telnet service.
+Start the service using the systemctl command.
+
+# systemctl start telnet.socket
+Enable the telnet service to start at boot.
+
+# systemctl enable telnet.socket
+4. Verify
+Once you are done with the configuration, verify if the telnet to a server works.
+
+# telnet geeklab02
+Trying 10.10.10.10...
+Connected to 10.10.10.10.
+Escape character is '^]'.
+
+Kernel 3.10.0-327.el7.x86_64 on an x86_64
+geeklab02 login: testuser
+Password: 
+Last login: Sat Jan 23 18:19:43 from geeklab
+
+[testuser@geeklab02 ~]$ hostname
+geeklab02
